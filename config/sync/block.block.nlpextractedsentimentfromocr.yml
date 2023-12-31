@@ -1,6 +1,6 @@
 uuid: 4a837b77-88a2-49ee-8929-9c471d7eaa19
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - facets.facet.nlp_extracted_sentiment_from_ocr

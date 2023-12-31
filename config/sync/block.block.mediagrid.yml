@@ -1,0 +1,24 @@
+uuid: 3115bf7f-fde8-48cc-8e6b-61d1b7b40d9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.grid_media
+  module:
+    - facets
+  theme:
+    - archipelago_subtheme
+id: mediagrid
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -17
+provider: null
+plugin: 'facet_block:grid_media'
+settings:
+  id: 'facet_block:grid_media'
+  label: Media
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: mediagrid
+visibility: {  }

@@ -1,0 +1,528 @@
+uuid: 0d698107-20c2-47b1-b4a3-9524e4b0347b
+langcode: en
+status: open
+dependencies:
+  module:
+    - webform_strawberryfield
+weight: 0
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: trimm_archive_metadata
+title: 'Trimm Archive Metadata'
+description: 'Metadata for Trimm Archive items'
+categories:
+  - Archipelago
+elements: |-
+  metadata:
+    '#type': fieldset
+    '#title': 'Basic Descriptive Metadata'
+    '#states_clear': false
+    '#access_create_roles':
+      - administrator
+      - metadata_pro
+    '#access_update_roles':
+      - authenticated
+    '#access_view_roles':
+      - authenticated
+    '#next_button_label': 'Move on to next step'
+    type:
+      '#type': select
+      '#title': 'Media Type'
+      '#help': 'Please select from the&nbsp;<a href="/admin/structure/webform/config/options/manage">predefined options</a>&nbsp;found in the Schema.org Creative Works list.'
+      '#options': schema_org_creative_works
+      '#required': true
+      '#states_clear': false
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+    label:
+      '#type': textfield
+      '#title': Title
+      '#description': 'Please provide a brief title for this digital object.'
+      '#title_display': before
+      '#description_display': before
+      '#minlength': 3
+      '#maxlength': 256
+      '#placeholder': 'Title of this Object'
+      '#required': true
+      '#required_error': 'Please provide a brief title for this digital object.'
+      '#states_clear': false
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+      '#access_create_roles':
+        - administrator
+        - metadata_pro
+      '#access_update_roles':
+        - administrator
+        - metadata_pro
+    medium:
+      '#type': textfield
+      '#title': 'Artistic media'
+      '#multiple': true
+      '#description': 'Type of artistic media, e.g. "acrylic", "watercolor", etc.'
+      '#multiple__empty_items': 0
+      '#multiple__add_more': false
+    description:
+      '#type': textarea
+      '#title': Description
+      '#description': 'Please provide a brief description for this digital object.'
+      '#title_display': before
+      '#description_display': before
+      '#rows': 4
+      '#autocomplete': 'off'
+      '#required_error': 'Please provide a brief description for this digital object.'
+      '#states_clear': false
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+    size:
+      '#type': textfield
+      '#title': Size
+      '#description': 'Width and height in inches, e.g. "22w x 28h"'
+      '#pattern': '\b\d+(?: \d\/\d+)?\s*w\s*x\s*\d+(?: \d\/\d+)?\s*h\b'
+      '#pattern_error': 'Size must be in the form "[NN]w x [NN]h'
+    subject_loc:
+      '#type': webform_metadata_loc
+      '#title': 'Subjects (LOD)'
+      '#multiple': true
+      '#multiple__header': true
+      '#multiple__no_items_message': ''
+      '#multiple__min_items': 1
+      '#multiple__empty_items': 0
+      '#multiple__sorting': false
+      '#multiple__add_more': false
+      '#multiple__add_more_input': false
+      '#label__title': 'Subject Label'
+      '#rdftype': ''
+    date_created_fieldset:
+      '#type': details
+      '#title': 'Date Created'
+      '#description': 'You may choose to use either the Date Created in different ways--using <a href="https://www.loc.gov/standards/datetime/">EDTF formatting</a>, as a Fixed/ISO date, or as an&nbsp;unmapped, free-text string. Please note that unmapped/free-text dates will not be indexed for the Date Created facet.'
+      '#open': true
+      '#states_clear': false
+      date_created_free:
+        '#type': textfield
+        '#title': 'Date Created (Free)'
+        '#states_clear': false
+        '#format_items': comma
+      date_created_edtf:
+        '#type': webform_metadata_date
+        '#title': 'Date Created (EDTF)'
+        '#states_clear': false
+        '#format_items': comma
+        '#showfreeformalways': true
+        '#edtf_validateme': true
+        '#date_date_format': ''
+    creator:
+      '#type': webform_metadata_multiagent
+      '#title': Creator
+      '#multiple': true
+      '#multiple__empty_items': 0
+      '#multiple__add_more': false
+      '#multiple__add_more_input': false
+      '#name_label__title': 'Creator Name'
+      '#name_label__required': true
+      '#name_uri__title': 'Creator URL'
+      '#vocab_personal_name': names
+      '#vocab_corporate_name': names
+      '#vocab_family_name': names
+      '#role_type': loc
+    publisher:
+      '#type': textfield
+      '#title': Publisher
+      '#title_display': before
+      '#description_display': before
+      '#states_clear': false
+      '#format_items': comma
+  collection_and_administrative_info:
+    '#type': fieldset
+    '#title': 'Administrative Information'
+    '#states_clear': false
+    '#prev_button_label': 'Back to the previous step'
+    '#next_button_label': 'Move on to next step'
+    photo_id:
+      '#type': textfield
+      '#title': 'Photo ID'
+      '#input_mask': '9999'
+    shelf_location:
+      '#type': textfield
+      '#title': 'Shelf location'
+      '#description': 'Shelf identifier (A-Z)'
+      '#input_mask': a
+      '#pattern': '[A-Z]'
+    ismemberof:
+      '#type': entity_autocomplete
+      '#title': 'Collection Membership'
+      '#unique': true
+      '#states_clear': false
+      '#format_items': comma
+      '#target_type': node
+      '#selection_handler': 'default:node'
+      '#selection_settings':
+        target_bundles:
+          digital_object_collection: digital_object_collection
+        sort:
+          field: title
+          direction: ASC
+    ispartof:
+      '#type': entity_autocomplete
+      '#title': 'Part of a Creative Work Series'
+      '#description': 'Select a parent Creative Work Series ADO'
+      '#help': 'Use this element to attach this Object to a Creative Work Series ADO (Collection type). This works similar to the legacy &quot;Compounding&quot; idea.'
+      '#unique': true
+      '#states_clear': false
+      '#format_items': comma
+      '#target_type': node
+      '#selection_handler': solr_views
+      '#selection_settings':
+        view:
+          view_name: ado_selection_by_type
+          display_name: entity_reference_solr_creativeworks
+          arguments:
+            - CreativeWorkSeries
+    sequence_id:
+      '#type': number
+      '#title': 'Sequence ID'
+      '#states':
+        visible:
+          ':input[name="ispartof"]':
+            filled: true
+      '#states_clear': false
+      '#format_items': comma
+      '#min': 1
+      '#max': 10000
+      '#step': 1
+    owner:
+      '#type': textfield
+      '#title': 'Institutional owner'
+      '#title_display': before
+      '#states_clear': false
+      '#label_attributes':
+        class:
+          - custom-form-input-heading
+      '#format_items': comma
+    rights_statements:
+      '#type': select
+      '#title': 'Rights Statement'
+      '#description': '<p>Please select one of the 12 standarized rights statements from <a href="https://rightsstatements.org/page/1.0/">RightsStatements.org</a>.</p>'
+      '#help_title': RightsStatement.org
+      '#help': '<p>RightsStatements.org provides a set of standardized rights statements that can be used to communicate the copyright and re-use status of digital objects to the public. Our rights statements are supported by major aggregation platforms such as the Digital Public Library of America and Europeana. The rights statements have been designed with both human users and machine users (such as search engines) in mind and make use of semantic web technology. Learn more about how you can use our rights statements&nbsp;<a href="https://rightsstatements.org/en/documentation#use-by-cultural-heritage-institutions">here</a>.</p>'
+      '#title_display': before
+      '#description_display': before
+      '#options':
+        'In Copyright': 'In Copyright'
+        'In Copyright - EU Orphan Work': 'In Copyright - EU Orphan Work'
+        'In Copyright - Educational Use Permitted': 'In Copyright - Educational Use Permitted'
+        'In Copyright - Non-Commercial Use Permitted': 'In Copyright - Non-Commercial Use Permitted'
+        'In Copyright - Rights-holder(s) Unlocatable or Unidentifiable': 'In Copyright - Rights-holder(s) Unlocatable or Unidentifiable'
+        'No Copyright - Contractual Restrictions': 'No Copyright - Contractual Restrictions'
+        'No Copyright - Non-Commercial Use Only': 'No Copyright - Non-Commercial Use Only'
+        'No Copyright - Other Known Legal Restrictions': 'No Copyright - Other Known Legal Restrictions'
+        'No Copyright - United States': 'No Copyright - United States'
+        'Copyright Not Evaluated': 'Copyright Not Evaluated'
+        'Copyright Undetermined': 'Copyright Undetermined'
+        'No Known Copyright': 'No Known Copyright'
+      '#states_clear': false
+    rights:
+      '#type': textarea
+      '#title': 'Local Rights Statement'
+      '#states_clear': false
+      '#format_items': comma
+    note:
+      '#type': textarea
+      '#title': 'General Note'
+      '#states_clear': false
+      '#format_items': comma
+  media:
+    '#type': fieldset
+    '#title': 'Upload Files'
+    '#open': true
+    '#prev_button_label': 'Back to previous step'
+    image_cropped:
+      '#type': webform_image_file
+      '#title': 'Upload Cropped Image Files'
+      '#multiple': 10
+      '#states_clear': false
+      '#format': custom
+      '#format_html': '<img src="{{  item.link }}">'
+      '#format_items': ol
+      '#access_create_roles':
+        - authenticated
+      '#access_update_roles':
+        - authenticated
+      '#access_view_roles':
+        - authenticated
+      '#file_preview': ':image'
+      '#max_filesize': '512'
+      '#file_extensions': 'jp2 jpg jpeg png tif tiff'
+    image_full:
+      '#type': webform_image_file
+      '#title': 'Upload Full Image Files'
+      '#multiple': 10
+      '#states_clear': false
+      '#format': custom
+      '#format_html': '<img src="{{  item.link }}">'
+      '#format_items': ol
+      '#access_create_roles':
+        - authenticated
+      '#access_update_roles':
+        - authenticated
+      '#access_view_roles':
+        - authenticated
+      '#file_preview': ':image'
+      '#max_filesize': '512'
+      '#file_extensions': 'jp2 jpg jpeg png tif tiff'
+    documents:
+      '#type': webform_document_file
+      '#title': 'Upload Document Files'
+      '#multiple': 1000
+      '#states':
+        visible:
+          - ':input[name="type"]':
+              value: ShortStory
+          - xor
+          - ':input[name="type"]':
+              value: Dataset
+          - xor
+          - ':input[name="type"]':
+              value: Podcast
+          - xor
+          - ':input[name="type"]':
+              value: Conversation
+          - xor
+          - ':input[name="type"]':
+              value: NewspaperIssue
+          - xor
+          - ':input[name="type"]':
+              value: PublicationIssue
+          - xor
+          - ':input[name="type"]':
+              value: Article
+          - xor
+          - ':input[name="type"]':
+              value: DigitalDocument
+          - xor
+          - ':input[name="type"]':
+              value: Thesis
+          - xor
+          - ':input[name="type"]':
+              value: Book
+      '#states_clear': false
+      '#file_placeholder': 'Archipelago is currently only configured to display pdfs, but can still enable download other file types.'
+      '#file_extensions': 'txt rtf pdf doc docx odt ppt pptx odp xls xlsx ods csv'
+      '#sanitize': true
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__label': 'Save Metadata'
+    '#reset__label': 'Clear Form'
+    '#preview_prev_hide': true
+css: ''
+javascript: ''
+settings:
+  ajax: true
+  ajax_scroll_top: ''
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: source_entity_webform
+  form_submit_once: true
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: true
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: true
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: true
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 1
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: inline
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: true
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  a_strawberryfield_harvester:
+    id: strawberryField_webform_handler
+    handler_id: a_strawberryfield_harvester
+    label: 'A strawberryField harvester'
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      submission_url: 'https://api.example.org/SOME/ENDPOINT'
+      upload_scheme: s3
+      operation: null
+      ado_settings:
+        bundles: null
+        entity_revision: false
+      ado_crud_enabled: false
+      states:
+        - completed
+      ado_prepopulate_enabled: false
+variants: {  }

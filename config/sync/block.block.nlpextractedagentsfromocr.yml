@@ -1,6 +1,6 @@
 uuid: 44bbcb6b-02e2-4801-b471-f78d5f8bb104
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - facets.facet.nlp_extracted_agents_from_ocr
@@ -12,7 +12,7 @@ dependencies:
 id: nlpextractedagentsfromocr
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: -3
 provider: null
 plugin: 'facet_block:nlp_extracted_agents_from_ocr'
 settings:

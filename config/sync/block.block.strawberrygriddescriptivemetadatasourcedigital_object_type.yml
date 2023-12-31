@@ -5,8 +5,8 @@ dependencies:
   config:
     - facets.facet.digital_object_type_grid
   module:
-    - context
     - facets
+    - user
   theme:
     - archipelago_subtheme
 id: strawberrygriddescriptivemetadatasourcedigital_object_type
@@ -20,15 +20,13 @@ settings:
   label: 'Object Type'
   label_display: visible
   provider: facets
+  context_mapping: {  }
   block_id: strawberrygriddescriptivemetadatasourcedigital_object_type
 visibility:
-  request_path_exclusion:
-    id: request_path_exclusion
-    negate: null
-    context_mapping: {  }
-    pages: ''
-  view_inclusion:
-    id: view_inclusion
-    negate: null
-    context_mapping: {  }
-    view_inclusion: {  }
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

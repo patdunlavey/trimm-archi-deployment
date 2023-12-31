@@ -82,6 +82,14 @@ field_settings:
     configuration:
       type: union
       fields: {  }
+  artistic_media:
+    label: '🍓 Strawberry (Descriptive Metadata source) » artistic_media'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:artistic_media'
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
   as_generator_actor_url:
     label: '🍓 Strawberry (Descriptive Metadata source) » as_generator_actor_url'
     datasource_id: 'entity:node'
@@ -157,6 +165,14 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: 'field_descriptive_metadata:date_created_original'
     type: date
+    dependencies:
+      config:
+        - field.storage.node.field_descriptive_metadata
+  date_created_original_year_facet:
+    label: '🍓 Strawberry (Descriptive Metadata source) » date_created_original - year for facet'
+    datasource_id: 'entity:node'
+    property_path: 'field_descriptive_metadata:date_created_original'
+    type: integer
     dependencies:
       config:
         - field.storage.node.field_descriptive_metadata
@@ -630,6 +646,7 @@ processor_settings:
     weights:
       add_properties: 20
   auto_aggregated_fulltext_field: {  }
+  custom_value: {  }
   entity_type: {  }
   highlight:
     weights:

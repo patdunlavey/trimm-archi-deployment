@@ -24,21 +24,20 @@ third_party_settings:
       disable_css: false
       entity_classes: all_classes
       settings:
+        classes:
+          layout_class: {  }
         wrappers:
           ds_content: div
+        outer_wrapper: div
+        attributes: ''
+        link_attribute: ''
+        link_custom: ''
         label: ''
     regions:
       ds_content:
-        - node_changed_date
         - node_title
         - field_descriptive_metadata
-        - search_api_excerpt
     fields:
-      node_changed_date:
-        plugin_id: node_changed_date
-        weight: 0
-        label: hidden
-        formatter: ds_post_date_long
       node_title:
         plugin_id: node_title
         weight: 0
@@ -46,7 +45,8 @@ third_party_settings:
         formatter: default
         settings:
           link: true
-          wrapper: h2
+          'link class': ''
+          wrapper: h4
           class: ''
 id: node.digital_object.digital_object_with_thumbnail_for_grid
 targetEntityType: node
@@ -64,13 +64,10 @@ content:
       specs: 'http://schema.org'
       metadatadisplayentity_uuid: 7ca9ef30-1535-4616-b3b2-201dcc7d6a69
       metadatadisplayentity_uselabel: '0'
+      upload_json_key_source: ''
+      embargo_json_key_source: ''
     third_party_settings: {  }
     weight: 1
-    region: ds_content
-  search_api_excerpt:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 2
     region: ds_content
 hidden:
   body: true
@@ -78,3 +75,4 @@ hidden:
   field_date_1: true
   langcode: true
   links: true
+  search_api_excerpt: true

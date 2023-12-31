@@ -1,18 +1,18 @@
-uuid: be7d8a80-36fe-4460-8235-efab96f04eb6
+uuid: 20501d52-edb3-468a-9b74-a27656db7387
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - facets.facet.mime_type
   module:
-    - context
     - facets
+    - user
   theme:
     - archipelago_subtheme
 id: mimetype
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -5
+weight: -6
 provider: null
 plugin: 'facet_block:mime_type'
 settings:
@@ -20,12 +20,13 @@ settings:
   label: 'MIME Type'
   label_display: visible
   provider: facets
+  context_mapping: {  }
   block_id: mimetype
 visibility:
-  view_inclusion:
-    id: view_inclusion
+  user_role:
+    id: user_role
     negate: false
-    context_mapping: {  }
-    view_inclusion:
-      view-solr_search_content-grid: view-solr_search_content-grid
-      view-solr_search_content-page_1: view-solr_search_content-page_1
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

@@ -24,7 +24,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Discover
+      title: 'Explore the Archive'
       fields:
         sbf_label:
           id: sbf_label
@@ -309,23 +309,26 @@ display:
           multi_type: separator
           multi_separator: ', '
       pager:
-        type: mini
+        type: full
         options:
           offset: 0
-          items_per_page: 25
+          items_per_page: 20
           total_pages: null
           id: 0
           tags:
             next: 'next ›'
             previous: '‹ previous'
+            first: '« First'
+            last: 'Last »'
           expose:
-            items_per_page: false
+            items_per_page: true
             items_per_page_label: 'Items per page'
-            items_per_page_options: '10, 25, 50'
+            items_per_page_options: '10, 20, 40, 80'
             items_per_page_options_all: false
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+          quantity: 9
       exposed_form:
         type: basic
         options:
@@ -763,22 +766,21 @@ display:
     position: 1
     display_options:
       cache:
-        type: search_api_tag
-        options: {  }
+        type: none
       sorts:
-        changed:
-          id: changed
+        search_api_relevance:
+          id: search_api_relevance
           table: search_api_index_default_solr_index
-          field: changed
+          field: search_api_relevance
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: search_api
           order: DESC
           expose:
-            label: ''
-            field_identifier: changed
-          exposed: false
+            label: Relevance
+            field_identifier: search_api_relevance
+          exposed: true
       style:
         type: views_bootstrap_grid
         options:
@@ -835,23 +837,20 @@ display:
           empty: false
           display_id: page_1
       exposed_block: true
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       path: search_grid
     cache_metadata:
-      max-age: 0
+      max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
-        - 'config:facets.facet.date_of_original_grid'
-        - 'config:facets.facet.digital_object_type_grid'
-        - 'config:facets.facet.grid_subject_labels'
-        - 'config:facets.facet.is_memberof_grid'
-        - 'config:facets.facet.mime_type_grid'
-        - 'config:facets.facet.strawberry_descriptive_metadata_source_agents_grid'
         - 'config:search_api.index.default_solr_index'
         - 'search_api_list:default_solr_index'
       cacheable: false
@@ -864,26 +863,27 @@ display:
       cache:
         type: none
       sorts:
-        changed:
-          id: changed
+        search_api_relevance:
+          id: search_api_relevance
           table: search_api_index_default_solr_index
-          field: changed
+          field: search_api_relevance
           relationship: none
           group_type: group
           admin_label: ''
           plugin_id: search_api
           order: DESC
           expose:
-            label: ''
-            field_identifier: changed
-          exposed: false
+            label: Relevance
+            field_identifier: search_api_relevance
+          exposed: true
       defaults:
         cache: false
         use_ajax: false
         sorts: false
       use_ajax: true
       exposed_block: true
-      display_extenders: {  }
+      display_extenders:
+        sbf_ajax_interactions: {  }
       path: search
     cache_metadata:
       max-age: -1
@@ -892,6 +892,8 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
       tags:
         - 'config:search_api.index.default_solr_index'

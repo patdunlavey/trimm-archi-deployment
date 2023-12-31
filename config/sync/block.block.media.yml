@@ -1,0 +1,24 @@
+uuid: 024a50b2-4d2b-4e4c-8771-7ed5284aecf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.page_media
+  module:
+    - facets
+  theme:
+    - archipelago_subtheme
+id: media
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -18
+provider: null
+plugin: 'facet_block:page_media'
+settings:
+  id: 'facet_block:page_media'
+  label: Media
+  label_display: visible
+  provider: facets
+  context_mapping: {  }
+  block_id: media
+visibility: {  }

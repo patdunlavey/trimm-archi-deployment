@@ -1,0 +1,55 @@
+uuid: f410b944-edd5-4c1a-b28c-041e450bcea4
+langcode: en
+status: true
+dependencies:
+  config:
+    - search_api.index.default_solr_index
+    - views.view.solr_search_content
+  module:
+    - search_api
+id: grid_summary
+name: 'Grid Selections'
+facet_source_id: 'search_api:views_page__solr_search_content__grid'
+processor_configs:
+  hide_when_not_rendered:
+    processor_id: hide_when_not_rendered
+    weights:
+      build: '45'
+    settings: {  }
+  sbf_last_active_facets:
+    processor_id: sbf_last_active_facets
+    weights:
+      build: '60'
+    settings:
+      enable: 0
+      enable_empty_message: 0
+      enable_query: 0
+      quote_query: true
+      text:
+        format: plain_text
+        value: 'No results found.'
+facets:
+  is_memberof_grid:
+    checked: true
+    label: Collection
+    separator: ', '
+    show_count: false
+    weight: 0
+  grid_media:
+    checked: true
+    label: Media
+    separator: ', '
+    show_count: false
+    weight: 0
+  grid_subject_labels:
+    checked: true
+    label: Subject
+    separator: ', '
+    show_count: false
+    weight: 0
+  digital_object_type_grid:
+    checked: true
+    label: 'Object Type'
+    separator: ', '
+    show_count: false
+    weight: 0

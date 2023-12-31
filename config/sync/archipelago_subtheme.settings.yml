@@ -10,7 +10,7 @@ features:
   favicon: true
   node_user_picture: true
 logo:
-  path: ''
+  path: 'public://trimm-small.jpeg'
   use_default: false
 bootstrap_barrio_library: production
 bootstrap_barrio_source: bootstrap_barrio/bootstrap_cdn
@@ -88,7 +88,7 @@ bootstrap_barrio_navbar_affix: 0
 bootstrap_barrio_sidebar_first_affix: 0
 bootstrap_barrio_sidebar_second_affix: 0
 bootstrap_barrio_scroll_spy: ''
-bootstrap_barrio_google_fonts: roboto
+bootstrap_barrio_google_fonts: alegreya_roboto
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: fontawesome
 bootstrap_barrio_system_messages: ''
@@ -110,3 +110,26 @@ bootstrap_barrio_breadcrumb_divider: ''
 bootstrap_barrio_button_type: primary
 bootstrap_barrio_float_label: 0
 bootstrap_barrio_enable_color: 0
+bootstrap_barrio_region_width_top_header: 0
+bootstrap_barrio_region_width_top_header_form: 0
+bootstrap_barrio_region_width_header: 0
+bootstrap_barrio_region_width_header_form: 0
+bootstrap_barrio_region_width_primary_menu: 0
+bootstrap_barrio_region_width_secondary_menu: 0
+bootstrap_barrio_region_width_editor_toolbar: 0
+bootstrap_barrio_region_width_page_top: 0
+bootstrap_barrio_region_width_page_bottom: 0
+bootstrap_barrio_region_width_highlighted: 0
+bootstrap_barrio_region_width_featured_top: 0
+bootstrap_barrio_region_width_breadcrumb: 0
+bootstrap_barrio_region_width_content: 0
+bootstrap_barrio_region_width_sidebar_first: 0
+bootstrap_barrio_region_width_sidebar_second: 0
+bootstrap_barrio_region_width_featured_bottom_first: 0
+bootstrap_barrio_region_width_featured_bottom_second: 0
+bootstrap_barrio_region_width_featured_bottom_third: 0
+bootstrap_barrio_region_width_footer_first: 0
+bootstrap_barrio_region_width_footer_second: 0
+bootstrap_barrio_region_width_footer_third: 0
+bootstrap_barrio_region_width_footer_fourth: 0
+bootstrap_barrio_region_width_footer_fifth: 0

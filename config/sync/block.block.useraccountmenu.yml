@@ -6,12 +6,13 @@ dependencies:
     - system.menu.account
   module:
     - system
+    - user
   theme:
     - archipelago_subtheme
 id: useraccountmenu
 theme: archipelago_subtheme
 region: header
-weight: -12
+weight: -19
 provider: null
 plugin: 'system_menu_block:account'
 settings:
@@ -22,4 +23,11 @@ settings:
   level: 1
   depth: 0
   expand_all_items: false
-visibility: {  }
+visibility:
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

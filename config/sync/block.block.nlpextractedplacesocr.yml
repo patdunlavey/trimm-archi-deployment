@@ -1,6 +1,6 @@
 uuid: b4cc822b-99a7-4191-9de4-fb0a518c77f9
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - facets.facet.nlp_extracted_places_ocr
@@ -12,7 +12,7 @@ dependencies:
 id: nlpextractedplacesocr
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: -1
 provider: null
 plugin: 'facet_block:nlp_extracted_places_ocr'
 settings:

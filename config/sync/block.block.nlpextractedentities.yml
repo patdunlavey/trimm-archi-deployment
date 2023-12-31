@@ -1,6 +1,6 @@
 uuid: dd870c2f-764f-402b-aa58-4e7b66444a35
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - facets.facet.nlp_extracted_entities
@@ -12,7 +12,7 @@ dependencies:
 id: nlpextractedentities
 theme: archipelago_subtheme
 region: sidebar_second
-weight: 0
+weight: -2
 provider: null
 plugin: 'facet_block:nlp_extracted_entities'
 settings:

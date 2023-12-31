@@ -1,18 +1,19 @@
 uuid: 19cee80f-df41-4b8a-9f23-80930f7b6d98
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - facets.facet.mime_type_grid
   module:
     - context
     - facets
+    - user
   theme:
     - archipelago_subtheme
 id: mimetypegrid
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -4
+weight: -7
 provider: null
 plugin: 'facet_block:mime_type_grid'
 settings:
@@ -20,6 +21,7 @@ settings:
   label: 'MIME Type'
   label_display: visible
   provider: facets
+  context_mapping: {  }
   block_id: mimetypegrid
 visibility:
   view_inclusion:
@@ -28,3 +30,10 @@ visibility:
     context_mapping: {  }
     view_inclusion:
       view-solr_search_content-grid: view-solr_search_content-grid
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated

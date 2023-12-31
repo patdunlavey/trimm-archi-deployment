@@ -27,10 +27,10 @@ hierarchy:
 expand_hierarchy: false
 enable_parent_when_child_gets_disabled: true
 widget:
-  type: searchbox_links
+  type: links
   config:
     show_numbers: true
-    soft_limit: 20
+    soft_limit: 3
     show_reset_link: true
     reset_text: 'Show all'
     hide_reset_when_no_selection: true

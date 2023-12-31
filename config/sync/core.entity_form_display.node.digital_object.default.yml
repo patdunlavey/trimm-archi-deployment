@@ -28,13 +28,22 @@ content:
     region: content
     settings:
       placeholder: 'Descriptive Metadata'
-      webform_id: descriptive_metadata
+      webform_id: trimm_archive_metadata
+      render_always: true
+      hide_cancel: true
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 2
+    weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -48,7 +57,6 @@ hidden:
   created: true
   langcode: true
   path: true
-  promote: true
   sticky: true
   title: true
   uid: true

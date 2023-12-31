@@ -1,0 +1,12 @@
+uuid: b7a57ad0-347d-4cea-a377-0527fe51beef
+langcode: en
+status: true
+dependencies: {  }
+id: artistic_media
+label: 'Artistic Media'
+pluginid: jmespath
+pluginconfig:
+  source_key: 'medium[*]'
+  is_date: false
+  exposed_key: artistic_media
+active: true

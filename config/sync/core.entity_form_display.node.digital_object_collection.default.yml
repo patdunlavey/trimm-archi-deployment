@@ -34,9 +34,9 @@ content:
     region: content
     settings:
       placeholder: 'Collection Metadata'
-      webform_id: digital_object_collection
-      render_always: false
-      hide_cancel: false
+      webform_id: trimm_archive_metadata
+      render_always: true
+      hide_cancel: true
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

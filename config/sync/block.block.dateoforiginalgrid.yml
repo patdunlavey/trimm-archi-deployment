@@ -12,14 +12,15 @@ dependencies:
 id: dateoforiginalgrid
 theme: archipelago_subtheme
 region: sidebar_second
-weight: -15
+weight: -19
 provider: null
 plugin: 'facet_block:date_of_original_grid'
 settings:
   id: 'facet_block:date_of_original_grid'
-  label: 'Date of Original'
+  label: 'Year Created'
   label_display: visible
   provider: facets
+  context_mapping: {  }
   block_id: dateoforiginalgrid
 visibility:
   view_inclusion:

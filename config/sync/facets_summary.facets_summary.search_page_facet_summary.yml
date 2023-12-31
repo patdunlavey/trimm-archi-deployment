@@ -28,20 +28,14 @@ processor_configs:
     weights:
       build: '60'
     settings:
-      enable: 1
-      enable_empty_message: 1
-      enable_query: 1
+      enable: 0
+      enable_empty_message: 0
+      enable_query: 0
       quote_query: false
       text:
         format: plain_text
         value: 'No results found.'
 facets:
-  date_of_original:
-    checked: true
-    label: 'Date of Original'
-    separator: ', '
-    show_count: false
-    weight: 0
   descriptive_metadata_agent_labels:
     checked: true
     label: '🍓 Strawberry (Descriptive Metadata source) » agents'
@@ -50,31 +44,25 @@ facets:
     weight: 0
   descriptive_metadata_object_types:
     checked: true
-    label: '🍓 Strawberry (Descriptive Metadata source) » digital_object_type'
-    separator: ', '
-    show_count: false
-    weight: 0
-  descriptive_metadata_source_json_keys:
-    checked: true
-    label: '🍓 Strawberry (Descriptive Metadata source) » JSON keys defined in this field'
+    label: 'Object Type'
     separator: ', '
     show_count: false
     weight: 0
   descriptive_metadata_subjects:
     checked: true
-    label: '🍓 Strawberry (Descriptive Metadata source) » subject_labels'
+    label: Subject
     separator: ', '
     show_count: false
     weight: 0
   is_member_of_content_title:
     checked: true
-    label: '🍓 Strawberry (Descriptive Metadata source) » entity_sbf_entity_reference_ismemberof » Title'
+    label: Collection
     separator: ', '
     show_count: false
     weight: 0
-  mime_type:
+  page_media:
     checked: true
-    label: 'MIME Type'
+    label: Media
     separator: ', '
     show_count: false
     weight: 0

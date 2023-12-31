@@ -1,0 +1,29 @@
+uuid: 6047f628-1f72-4a2d-a5a0-fff670d5964e
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets_summary.facets_summary.grid_summary
+  module:
+    - context
+    - facets_summary
+  theme:
+    - archipelago_subtheme
+id: grid_summary
+theme: archipelago_subtheme
+region: sidebar_second
+weight: -22
+provider: null
+plugin: 'facets_summary_block:grid_summary'
+settings:
+  id: 'facets_summary_block:grid_summary'
+  label: Selections
+  label_display: visible
+  provider: facets_summary
+  context_mapping: {  }
+visibility:
+  view_inclusion:
+    id: view_inclusion
+    negate: false
+    view_inclusion:
+      view-solr_search_content-grid: view-solr_search_content-grid
