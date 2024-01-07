@@ -15,7 +15,7 @@ if [[ ! $s3_prefix =~ "/"$ ]]; then
 fi
 
 # Iterate through files in the local folder
-for file in "$local_folder"/*; do
+for file in "$local_folder"/*.jpg; do
   if [ -f "$file" ]; then
     s3_key="${s3_prefix}${file##*/}"
     aws s3 cp "$file" s3://trimm-archi-upload/"$s3_key"
